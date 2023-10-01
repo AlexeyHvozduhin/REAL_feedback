@@ -44,7 +44,7 @@ export const FillText = () => {
       else {
         const selection = window.getSelection();
         const selectedContent = selection.toString();
-        if (selectedContent.length === 0 || showPopup === true) {
+        if (selectedContent.length === 0) {
           setTextareaValue('');
           setShowPopup(false);
         }
