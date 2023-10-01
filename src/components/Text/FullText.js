@@ -55,7 +55,7 @@ export const FillText = () => {
     return () => {
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, []);
+  }, [handleMouseUp]);
 
   return (
     <div onContextMenu={handleContextMenu}>
