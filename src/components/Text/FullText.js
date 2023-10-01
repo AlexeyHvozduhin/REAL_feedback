@@ -22,7 +22,6 @@ export const FillText = () => {
     const selectedContent = selection.toString();
     if (selectedContent.length > 0) {
       const { clientX, clientY } = event;
-      //   console.log(event);
       setSelectedText(selectedContent);
       setPopupPosition({ x: clientX, y: clientY });
       setShowPopup(true);
