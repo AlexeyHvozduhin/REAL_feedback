@@ -1,16 +1,16 @@
+import { FillText } from './Text/FullText';
+import { Title } from './Title/Title';
+
 export const App = () => {
   return (
     <div
       style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
+        textAlign: 'center',
+        margin: '50px 0 0 0',
       }}
     >
-      React homework template
+      <Title />
+      <FillText />
     </div>
   );
 };
