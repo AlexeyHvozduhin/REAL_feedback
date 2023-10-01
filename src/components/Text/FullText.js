@@ -31,18 +31,6 @@ export const FillText = () => {
     }
   };
 
-  const handleMouseUp = evt => {
-    if (evt.toElement.className.includes('popup'));
-    else {
-      const selection = window.getSelection();
-      const selectedContent = selection.toString();
-      if (selectedContent.length === 0 || showPopup === true) {
-        setTextareaValue('');
-        setShowPopup(false);
-      }
-    }
-  };
-
   const popupButtonClick = () => {
     console.log('Выбрал: ', selectedText);
     console.log('Ввёл: ', textareaValue);
@@ -51,11 +39,22 @@ export const FillText = () => {
   };
 
   useEffect(() => {
+    const handleMouseUp = evt => {
+      if (evt.toElement.className.includes('popup'));
+      else {
+        const selection = window.getSelection();
+        const selectedContent = selection.toString();
+        if (selectedContent.length === 0 || showPopup === true) {
+          setTextareaValue('');
+          setShowPopup(false);
+        }
+      }
+    };
     document.addEventListener('mouseup', handleMouseUp);
     return () => {
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [handleMouseUp]);
+  }, []);
 
   return (
     <div onContextMenu={handleContextMenu}>
@@ -63,7 +62,6 @@ export const FillText = () => {
         <PopupWindow
           className="popup"
           style={{ top: popupPosition.y, left: popupPosition.x }}
-          //   onClick={popupButtonClick}
           onSubmit={evt => {
             evt.preventDefault();
             popupButtonClick();
@@ -82,29 +80,6 @@ export const FillText = () => {
           </div>
         </PopupWindow>
       )}
-      {/* ///////////////////////////////// */}
-      {/* <PopupWindow
-        className="popup"
-        style={{ top: popupPosition.y, left: popupPosition.x }}
-        //   onClick={popupButtonClick}
-        onSubmit={evt => {
-          evt.preventDefault();
-          popupButtonClick();
-        }}
-      >
-        <h4>Сообщить об ошибке</h4>
-        <p>{selectedText}</p>
-        <div>
-          <textarea
-            rows="3"
-            className="popup"
-            value={textareaValue}
-            onChange={handleTextareaChange}
-          />
-          <button type="submit" className="popup" />
-        </div>
-      </PopupWindow> */}
-      {/* //////////////////////////////// */}
       <TextBox>
         <div className="_film_list_box">
           <Text>{TrheeHundedWwwooods}</Text>
